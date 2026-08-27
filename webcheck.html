@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packsure-product scanner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">Packsure</div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Packaged commodity<br>Compliance Scanner</h1>
+
+      <p>
+        Scan a product image and extract important
+        package information automatically.
+      </p>
+
+      <div class="upload-box">
+        <div class="upload-icon"></div>
+        <h2>Upload product image</h2>
+        <p>Upload an image of the product label</p>
+        <input
+          type="file"
+          id="imageInput"
+          accept="image/*"
+        >
+        <button id="scanButton" type="button">
+          Scan / Analyze
+        </button>
+      </div>
+    </section>
+
+    <section class="result-section">
+      <div class="image-container">
+        <h2>Product Image</h2>
+        <img
+          id="preview"
+          src=""
+          alt="Product preview"
+      >
+      </div>
+
+      <div class="text-container">
+        <h2>Extracted Information</h2>
+        <pre id="result"></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html> -----------------------

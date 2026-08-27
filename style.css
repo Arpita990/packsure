@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fb;
+    color: #222;
+}
+
+header {
+    height: 70px;
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 25px;
+}
+
+main {
+    padding: 50px 8%;
+}
+
+.hero {
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.upload-box {
+    background: white;
+
+    max-width: 550px;
+    margin: auto;
+
+    padding: 40px;
+
+    border: 2px dashed #aaa;
+    border-radius: 15px;
+}
+
+.upload-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.upload-box h2 {
+    margin-bottom: 10px;
+}
+
+input {
+    margin: 20px 0;
+}
+
+button {
+    display: block;
+
+    margin: auto;
+
+    padding: 12px 30px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #222;
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.result-section {
+    display: flex;
+    gap: 30px;
+
+    margin-top: 50px;
+}
+
+.image-container,
+.text-container {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    flex: 1;
+}
+
+#preview {
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+pre {
+    white-space: pre-wrap;
+    margin-top: 20px;
+}
