@@ -31,7 +31,7 @@ async function scanImage() {
     formData.append("file", file);
 
     try {
-        const response = await fetch("https://packsure.onrender.com/scan", {
+        const response = await fetch("https://packsure-2.onrender.com/scan", {
             method: "POST",
             body: formData
         });
