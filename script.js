@@ -56,4 +56,4 @@ ${data.raw_text || "No text detected"}`;
         console.error(error);
         result.textContent = "Could not connect to the FastAPI backend.";
     }
-} 
+}
