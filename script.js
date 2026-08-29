@@ -1,74 +1,59 @@
+
 const imageInput = document.getElementById("imageInput");
 const preview = document.getElementById("preview");
-const scanButton = document.getElementById("scanButton");
 const result = document.getElementById("result");
+const scanButton = document.getElementById("scanButton");
 
-// Show uploaded image
+// Show selected image
 imageInput.addEventListener("change", function () {
-
     const file = imageInput.files[0];
 
     if (file) {
         const imageURL = URL.createObjectURL(file);
         preview.src = imageURL;
-
-        result.textContent = "Image uploaded. Ready to scan.";
     }
 });
 
-
 // Scan button
-scanButton.addEventListener("click", function () {
+scanButton.addEventListener("click", scanImage);
 
+async function scanImage() {
     const file = imageInput.files[0];
 
     if (!file) {
-        result.textContent = "Please upload a product image first.";
+        result.textContent = "Please select an image first.";
         return;
     }
 
-    // Simulated scanning
-    result.textContent = "🔍 Scanning product image...";
+    result.textContent = "Scanning...";
 
-    setTimeout(function () {
-        result.textContent = "🤖 Extracting information using OCR...";
-    }, 1500);
+    const formData = new FormData();
+    formData.append("file", file);
 
-    setTimeout(function () {
-        result.textContent = "⚖️ Checking Legal Metrology requirements...";
-    }, 3000);
+    try {
+        const response = await fetch("http://127.0.0.1:8000/scan", {
+            method: "POST",
+            body: formData
+        });
 
-    setTimeout(function () {
+        const data = await response.json();
 
-        result.textContent = `
-PRODUCT ANALYSIS
-==============================
+        result.textContent =
+`PRODUCT ANALYSIS
 
-MRP
-₹50                         ✓ Detected
+MRP: ${data.mrp || "Not detected"}
 
-Net Quantity
-100 g                       ✓ Detected
+Net Quantity: ${data.net_quantity || "Not detected"}
 
-Manufacturer
-XYZ Foods Pvt. Ltd.         ✓ Detected
+Consumer Care: ${data.consumer_care || "Not detected"}
 
-Consumer Care
-1800-123-4567               ✓ Detected
+Dates: ${data.dates?.join(", ") || "Not detected"}
 
+RAW OCR TEXT:
+${data.raw_text || "No text detected"}`;
 
-COMPLIANCE STATUS
-==============================
-
-⚠ POTENTIAL NON-COMPLIANCE
-
-Issue:
-Product requires further verification.
-
-Evidence:
-Uploaded product image.
-`;
-
-    }, 4500);
-
-});
+    } catch (error) {
+        console.error(error);
+        result.textContent = "Could not connect to the FastAPI backend.";
+    }
+} 
